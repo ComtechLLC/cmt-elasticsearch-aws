@@ -1,7 +1,7 @@
 FROM elasticsearch:1.7
 
 RUN bin/plugin install elasticsearch/elasticsearch-cloud-aws/2.7.1
-RUN ulimit -n 65536
+
 
 EXPOSE 9200:9200
 EXPOSE 9300:9300
