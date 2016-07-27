@@ -15,7 +15,7 @@ if [ "$1" = 'elasticsearch' ]; then
 fi
 
 # ECS will report the docker interface without help, so we override that with host's private ip
-AWS_PRIVATE_IP=`curl http://169.254.169.254/latest/meta-data/local-ipv4`
+AWS_PRIVATE_IP="$(/sbin/ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}')"
 set -- "$@" --network.publish_host=$AWS_PRIVATE_IP
 
 # As argument is not related to elasticsearch,
